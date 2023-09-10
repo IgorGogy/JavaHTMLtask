@@ -3,32 +3,44 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Locale;
 
 public class MakingChangesInPartOfText {
 
     public ArrayList makingWordsBoldAndItalic(ArrayList<String> partOfTextFromReader, HashSet dicWords, HashSet symbASCII, HashSet lettersASCII) {
         ArrayList<String> partOfTextFromReaderChanged = new ArrayList<>();
-        int n = 0; // номер элемента списка partOfTextFromReader    .trim()
+        int n = 0; // номер элемента списка partOfTextFromReader
+        int n_mainSring = 0; // номер основной строки
+        int n_word = 0; // номер последнего слова в предложении в основной строке
+        String slovo = null;
         while (n < partOfTextFromReader.size()) {
+            System.out.println(partOfTextFromReader.get(n));
             ArrayList<String> small_string = new ArrayList<>(Arrays.asList((partOfTextFromReader.get(n)).split(" ")));// тут создаем AraayList из строки номер n основного ArrayList-a
             System.out.println(partOfTextFromReader.get(0));
             System.out.println(small_string);
             int small_n = 0;
-            String wordForArray = null;
+            //*   String wordForArray = null;
             while (small_n < small_string.size()) {
                 String changedWord = null;
 
                 //   boolean equalsOfWords = dicWords.contains(small_string.get(small_n));
+                System.out.println(small_string.get(small_n));
                 if (!symbASCII.contains(small_string.get(small_n))) { //.trim()!= если отрезанный от начала слова знак равен всему слову значит это слово-символ т.е. изодного только символа типа "-"
-                    if (dicWords.contains(small_string.get(small_n).trim())) {
+                    if (dicWords.contains(small_string.get(small_n).toLowerCase(Locale.ROOT))) {
                         changedWord = ("<b>" + "<i>" + small_string.get(small_n) + "</i>" + "</b>");
+
                     } else {
                         changedWord = small_string.get(small_n);
                     }
                     // if ((small_n == (small_string.size() - 1))) && !(changedWord ==null) {
-                    if (!(changedWord == null) && small_n == (small_string.size() - 1)) {
+                    if (!(changedWord == null) && small_n == (small_string.size() - 1)) { //строка if будет выполняться, когда changedWord не равна null, и текущее слово является последним словом в предложении в small_string.
+                        System.out.println(changedWord); //отладка
                         changedWord = (changedWord + "<br>");
+// отладочный код
+                        if (changedWord.contains("клетку"))
+                            System.out.println(changedWord);
                     }
+                    System.out.println(changedWord); //отладка
                     /*{ //проверяется слово номер small_n элемента(строки) small_string в словаре dicWords и возвращается true/false в if
                         small_string.set(small_n, ("<b>" + "<i>" + small_string.get(small_n) + "</i>" + "</b>"));
                         if (small_n == small_string.size() - 1)
@@ -63,7 +75,7 @@ public class MakingChangesInPartOfText {
                                     }
                                 }
                             }
-                            if (dicWords.contains(wordOutOfSymbols.toString())) {
+                            if (dicWords.contains(wordOutOfSymbols.toString().toLowerCase(Locale.ROOT))) {
                                 changedWord = (symbolsForward + "<b>" + "<i>" + wordOutOfSymbols + "</i>" + "</b>" + symbolsBuck);
                             } else {
                                 changedWord = small_string.get(small_n);
@@ -75,42 +87,22 @@ public class MakingChangesInPartOfText {
                                 }
                             }
                         }
-                                        // ДЕЛАЕМ РАЗРЫВ ПО КОНЦУ ПреДЛОженИЯ
+                        // ДЕЛАЕМ РАЗРЫВ ПО КОНЦУ ПреДЛОженИЯ
                         // ищем слово с точкой на конце partOfTextFromReader.get(n)
-                        System.out.println(changedWord);
-                        System.out.println((partOfTextFromReader.get(n)).toCharArray());
-                        if (((partOfTextFromReader.get(n)).contains(". ")) || ((partOfTextFromReader.get(n)).contains("! ")) || ((partOfTextFromReader.get(n)).contains("? "))){
-                            //  String lastLetter = changedWord.substring(changedWord.length()-1, changedWord.length()); // поиск точки в конце слова
-                            //if (lastLetter.equals(">")){
-                            //  lastLetter = changedWord.substring(changedWord.length() - 5, changedWord.length() - 4); // поиск точки в конце слова<br>
-                        //}
-                            // выше нашли слово с . или !? +пробел на конце
-                         String stroka = (partOfTextFromReader.get(n)).toString();
-                            System.out.println(stroka);
-                            System.out.println(stroka.length());
-                            System.out.println(partOfTextFromReader.get(n).length());
 
 
-                         for (int i=(partOfTextFromReader.get(n).length()); i>2; i--){
-                             System.out.println(stroka);
-                             System.out.println(stroka.substring((i-2), i));
-                             System.out.println(stroka.substring(i, (partOfTextFromReader.get(n).length())));
-                         if ((stroka.substring((i-2), i)).equals(". ") || (stroka.substring((i-2), i)).equals("! ") || (stroka.substring((i-2), i)).equals("? ")){
-                                 System.out.println("вот оно то самое!  " + "\"" + stroka.substring((i-2), i)+ "\"");
-                             }
-                             System.out.println(stroka.substring((i-2), i) );
-                         }
-                            small_string.set(small_n, changedWord); // записываем найденное последнее "слово. " в строку       System.out.println(small_string.get(small_n));
-                           break;
-
-                        }
-
-
-
-
-
-
-                            // ОКОНЧАТЕЛЬНАЯ ЗАПИСЬ СЛОВА В СТРОК
+                       /* System.out.println((partOfTextFromReader.get(n)).toCharArray());
+                        if (partOfTextFromReader.get(n).contains(".") || partOfTextFromReader.get(n).contains("!") || partOfTextFromReader.get(n).contains("?")) {
+                            System.out.println(changedWord.charAt(changedWord.length() - 1));
+                            if ((changedWord.charAt(changedWord.length() - 1)) == '.' || (changedWord.charAt(changedWord.length() - 1)) == '!' || (changedWord.charAt(changedWord.length() - 1)) == '?') {
+                                n_mainSring = n;
+                                n_word = small_n;
+                                slovo = changedWord;
+                                System.out.println(changedWord);
+                                System.out.println(changedWord);
+                            }
+                        }*/
+                        // ОКОНЧАТЕЛЬНАЯ ЗАПИСЬ СЛОВА В СТРОК
                         small_string.set(small_n, changedWord);
                         System.out.println(small_string.get(small_n));
 
@@ -126,25 +118,7 @@ public class MakingChangesInPartOfText {
             String delim = " "; // разделитель
             int i = 0;
             while (i < small_string.size()) { //
-                // ниже выясняем является ли последний символ слова точкой(!?.) с пробелом
-/*
-                String[] words = (small_string.get(i)).split(" "); // разделяем строку на массив слов "\s+" && Character.isUpperCase(word.charAt(0))
-                System.out.println(small_string.get(i));
-                for (int j=0; j< words.length; j++) {  //(String word : words)
-                    System.out.println(words[j]);
-                    String word = words[j];
-                    System.out.println(word);
-                    if (!word.isEmpty() && word.charAt(word.length()-1)=='.' || word.charAt(word.length()-1)=='!' || word.charAt(word.length()-1)=='?') {
-                            numberOfSentence++;
 
-
-                        */
-/*hasCapitalizedWords = true;
-                        break; // Если найдено хотя бы одно слово с заглавной буквой, выходим из цикла*//*
-
-                    }
-                }
-*/
                 System.out.println(small_string.get(i));
                 finalStrings.append(small_string.get(i));
                 if (i != (small_string.size() - 1))
@@ -183,6 +157,17 @@ public class MakingChangesInPartOfText {
             System.out.println("есть");
         System.out.println("нет");
         System.out.println(partOfTextFromReaderChanged);*/
+
+        System.out.println(n);
+        // System.out.println();
+        System.out.println(n_mainSring);
+        System.out.println(n_word);
+        System.out.println(slovo);
+        if (n_mainSring != 0) {
+            partOfTextFromReaderChanged.add(Integer.toString(n_mainSring));
+            partOfTextFromReaderChanged.add(Integer.toString(n_word));
+        }
+        System.out.println(partOfTextFromReaderChanged);
         return partOfTextFromReaderChanged; //boldedpart;
     }
 }

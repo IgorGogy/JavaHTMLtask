@@ -19,20 +19,26 @@ public abstract class StringsOfFile implements FileSystem {
 */
 
     //@Override
-    public ArrayList readLines(String path, String name, int nuberOfStartStrings, int nuberOfEndStrings, int i) {
+    public ArrayList readLines(ArrayList jj, String path, String name, int nuberOfStartStrings, int nuberOfEndStrings, int i) {
 /*
         this.i=62; //
         int bb = this.i;
+
 */
-        String line = null;
         ArrayList<String> nStrings = null; // приходится иннициализировать объект типа ArrayList отдельно, т.к. без иннициализации не срабатывает return
+        nStrings = new ArrayList<>(); // создаем ArrayList, для накопления в элементах прочитанных строк
+
+        System.out.println(jj);
+        String line = null;
+        System.out.println(nStrings);
+        nStrings = jj;
+        System.out.println(nStrings);
         try (LineNumberReader br = new LineNumberReader(new FileReader(path + name))) {
-            nStrings = new ArrayList<>(); // создаем ArrayList, для накопления в элементах прочитанных строк
             while ((line = br.readLine()) != null) { // считываем строки из br соблюдая 2 условия: пока строка не null либо пока кол-во прочитанных строк < maxQuantityOfString
                 if (br.getLineNumber() <= nuberOfEndStrings && br.getLineNumber() >= nuberOfStartStrings) {  //проверяем входит данная строка по номеру в заданный диапазон номеров строк
                     nStrings.add(line); //заполняем элементы списка ArrayList считанными строками
                     System.out.println(nStrings);
-                  //  Reader Reader = null;
+                    //  Reader Reader = null;
                 }
             }
         } catch (IOException e) {

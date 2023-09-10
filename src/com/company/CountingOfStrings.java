@@ -8,7 +8,7 @@ public class CountingOfStrings {
 
     // подсчитываем количество строк в исходном файле
     public int countingOfStrings(String path, String nameIshodFile) {
-            int iStrings = 0;
+        int iStrings = 0;
         try (LineNumberReader kolStrok = new LineNumberReader(new FileReader(path + nameIshodFile))) {
             while (kolStrok.readLine() != null)
                 iStrings = kolStrok.getLineNumber();
@@ -18,7 +18,6 @@ public class CountingOfStrings {
         }
         return iStrings;
     }
-
 
 
 }
