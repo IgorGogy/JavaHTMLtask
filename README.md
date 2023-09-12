@@ -1,9 +1,13 @@
 "# JavaHTMLtask" 
 
+
 Problems.List:
 1. remove all unnesessary comment 
 2. make project runable (absolute path, relative path, no path)
-3. read metanin or smthng else about classes in java: what for they're exist, and what function realizes (check your classses for inconvergence)
+3. read metanin or smthng else about classes in java: what for they're existed, and what function realizes (check your classses for inconvergence)
+4. //FixME need to fix it; when done add "//Done!" in next line under
+5. //TODO need to do it; "//TODO *" is recomended primary task to implement.  %same as 4. add "//implemented" 
+6. 
 
 
 Все, что существительное — это наши объекты.
