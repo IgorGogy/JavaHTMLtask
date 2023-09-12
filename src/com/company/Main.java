@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         String path = System.getProperty("user.dir"); // записываем в path адрес строки в которую скопировали проект с кодом. "C:\\SOURCES\\JavaHTMLtask\\";
-        String nameIshodFile = "IMG_4860.MOV.mov"; //"IMG_4860.MOV.mov"   "ishod.txt"
+        String nameIshodFile = "ishod.txt"; //"IMG_4860.MOV.mov"   "ishod.txt"
         String nameHTMLFile = "prihod"; //"IMG_4860.MOV.mov"   "ishod.txt"
 
         String dicName = "dic.txt";
