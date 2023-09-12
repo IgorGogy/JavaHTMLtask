@@ -1,11 +1,4 @@
 "# JavaHTMLtask" 
-
-Problems.List:
-1. remove all unnesessary comment 
-2. make project runable (absolute path, relative path, no path)
-3. read metanin or smthng else about classes in java: what for they're exist, and what function realizes (check your classses for inconvergence)
-
-
 Все, что существительное — это наши объекты.
 Все глаголы — это действия, 
 а прилагательные — это характеристики
