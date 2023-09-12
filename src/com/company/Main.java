@@ -1,13 +1,14 @@
 package com.company;
-//import Classes.File;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) {
-        String path = "C:\\Users\\СУПЕР\\Documents\\Idea_task\\TskHTML\\";
-        String nameIshodFile = "ishod.txt"; //"IMG_4860.MOV.mov"   "ishod.txt"
+
+        String path = System.getProperty("user.dir"); // записываем в path адрес строки в которую скопировали проект с кодом. "C:\\SOURCES\\JavaHTMLtask\\";
+        String nameIshodFile = "IMG_4860.MOV.mov"; //"IMG_4860.MOV.mov"   "ishod.txt"
         String nameHTMLFile = "prihod"; //"IMG_4860.MOV.mov"   "ishod.txt"
 
         String dicName = "dic.txt";
@@ -33,11 +34,11 @@ public class Main {
             CountingOfStrings quantityOfStrings = new CountingOfStrings();
             int iStrings = quantityOfStrings.countingOfStrings(path, nameIshodFile);
             while (i < iStrings) {
+
                 // Чтение части текста величиной в n(N) строк.
 
                 ReadPartOfText partOfText = new ReadPartOfText();
 
-                System.out.println(jj);
                 ArrayList<String> n_strings = partOfText.readLines(jj, path, nameIshodFile, numberOfStartStrings, numberOfEndStrings, i);
                 i = i + n_strings.size(); //счетчик строк по всему файлу
                 numberOfStartStrings = numberOfEndStrings + 1;
@@ -52,13 +53,11 @@ public class Main {
 
                 DicRead ASCIIonlySymbols = new DicRead();
                 HashSet symbolsASCIILoUToFl = ASCIIonlySymbols.dicWord(path, symbols, j);
-                //  System.out.println(symbolsASCIILoUToFl);
 
                 // Буквы руского английского алфавита
 
                 DicRead RusLetters = new DicRead();
                 HashSet letters = RusLetters.dicWord(path, fileLetters, j);
-                //  System.out.println(russLetters);
 
                 //Изменение части текста жирным и наклонным
                 System.out.println(n_strings);
@@ -68,12 +67,13 @@ public class Main {
                 // Передача обработанной части текста для записи в файл
                 System.out.println(partWasChanged);
                 WriteInHTMLfile writerHTML = new WriteInHTMLfile();
-                jj = writerHTML.startHTMLTeg(partWasChanged, nameHTMLFile, path, i);
+                jj = writerHTML.startHTMLTeg(partWasChanged, nameHTMLFile, path, i, N);
                 System.out.println(jj);
-                iStrings++;
+                if (!jj.isEmpty()) {
+                    iStrings++;
+                }
             }
         }
         System.out.println("Превышен размер файла");
-        // write your code here
     }
 }
