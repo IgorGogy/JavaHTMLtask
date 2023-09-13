@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public abstract class StringsOfFile implements FileSystem {
+
+    //FixME мусор в CURRENT.txt или poleznosti.txt (эти файлы лучше хранить в яндекс диске/отдельном гитхабе или типа того.
     //int i = 0;
 
 /*

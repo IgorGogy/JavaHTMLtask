@@ -36,7 +36,8 @@ public class MakingChangesInPartOfText {
                     if (!(changedWord == null) && small_n == (small_string.size() - 1)) { //строка if будет выполняться, когда changedWord не равна null, и текущее слово является последним словом в предложении в small_string.
                         System.out.println(changedWord); //отладка
                         changedWord = (changedWord + "<br>");
-// отладочный код
+// отладочный код //Fixme WTF?? отладку делают отдельным методом и делают одну глобальную переменную debug=false; и потом
+// FixME  ею пользуются переставляя в true и в коде if(debug){calltestMethod(параметры,необходимые,методу}
                         if (changedWord.contains("клетку"))
                             System.out.println(changedWord);
                     }
@@ -45,7 +46,7 @@ public class MakingChangesInPartOfText {
                         small_string.set(small_n, ("<b>" + "<i>" + small_string.get(small_n) + "</i>" + "</b>"));
                         if (small_n == small_string.size() - 1)
                             small_string.set(small_n, (small_string.get(small_n) + "<br>"));
-                    } else */
+                    } else */ //Fixme WTF?? мусор
                     {
                         char[] lettersInWordOfString = small_string.get(small_n).toCharArray();//разбивает на чары не найденное в словаре слово
                         String str_f = "" + small_string.get(small_n).trim().charAt(0);////берет первый чар(символ) и делает его тип String-гом
