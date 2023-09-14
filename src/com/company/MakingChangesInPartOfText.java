@@ -33,6 +33,10 @@ public class MakingChangesInPartOfText {
                     if (!(changedWord == null) && small_n == (small_string.size() - 1)) { //строка if будет выполняться, когда changedWord не равна null, и текущее слово является последним словом в предложении в small_string.
                         System.out.println(changedWord); //отладка
                         changedWord = (changedWord + "<br>");
+// отладочный код //Fixme WTF?? отладку делают отдельным методом и делают одну глобальную переменную debug=false; и потом
+// FixME  ею пользуются переставляя в true и в коде if(debug){calltestMethod(параметры,необходимые,методу}
+                        if (changedWord.contains("клетку"))
+                            System.out.println(changedWord);
                     }
                     System.out.println(changedWord); //отладка
                     {
