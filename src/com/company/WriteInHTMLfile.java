@@ -17,7 +17,8 @@ public class WriteInHTMLfile {
         System.out.println(stroka);
         int n_mainSring = 0;
         try (BufferedWriter startHTMLTeg = new BufferedWriter(new FileWriter((stroka + (fileName + n + ".html"))))) {
-            startHTMLTeg.write("<html>\n" +
+            startHTMLTeg.write(  "<!DOCTYPE html>\n" +
+                    "<html lang=\"ru\">\n" +
                     " <head>\n" +
                     "  <meta charset=\"utf-8\">\n" +
                     "  <title>Тег META, атрибут charset</title>\n" +
@@ -120,7 +121,7 @@ public class WriteInHTMLfile {
             } // Убрали тэги из result
             }
             // добавляем концовку html файла
-            startHTMLTeg.write("</p> </body> </html>");
+            startHTMLTeg.write("</p>\n" +  "</body>\n" +  "</html>\n");
 
         } catch (IOException ex) {
             System.out.println("File has NOT been created");

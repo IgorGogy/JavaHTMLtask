@@ -1,45 +1,48 @@
 package com.company;
 
-import java.nio.file.Path;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) {
 
-        String path = System.getProperty("user.dir"); // записываем в path адрес строки в которую скопировали проект с кодом. "C:\\SOURCES\\JavaHTMLtask\\";
-        String nameIshodFile = "ishod.txt"; //"IMG_4860.MOV.mov"   "ishod.txt"
-        String nameHTMLFile = "prihod"; //"IMG_4860.MOV.mov"   "ishod.txt"
-
+        String path = System.getProperty("user.dir") + "\"\\"; // записываем в path адрес строки в которую скопировали проект с кодом. "C:\\SOURCES\\JavaHTMLtask\\";
+        String nameIshodFile = "ishod.txt";
+        String nameHTMLFile = "prihod"; 
         String dicName = "dic.txt";
         String symbols = "symbols.txt";
         String fileLetters = "letters.txt";
-
-        int N = 10;
-        int i = 0;
+        int N = 10; // количество строк в куске прочиаемого текста в итоге в файле html
+        int i = 0;  // суммарное количество прочитанных строк в ходе выполнения кода
         int j = 0; //номер слова в словаре dic.txt
+        int quantityOfDicStrings = 100000; // максимальное количество строк в словаре
         int numberOfStartStrings = 0;
         int numberOfEndStrings = numberOfStartStrings + N;
-        ArrayList jj = new ArrayList<>();
+        ArrayList leftoverOftext = new ArrayList<>();
 
         // ЗАПУСКАЕМ ПРОВЕРКУ РАЗМЕРА ФАЙЛА
-        CountOfFileSize sizeOfFile = new CountOfFileSize();
-        Boolean sizeYorN = sizeOfFile.isFileSizeLess2Mb(path, nameIshodFile);
 
-        //Усовие блокирует выполнение программы если размер исходного файла превышает 2Мб
-        if (sizeYorN) {
+        CountOfFileSize sizeOfFile = new CountOfFileSize();
+        Boolean sizeIshod = sizeOfFile.isFileSizeLess2Mb(path, nameIshodFile);
+        Boolean sizeDic = sizeOfFile.isFileSizeLess2Mb(path, dicName);
 
             // подсчитываем количество строк в исходном файле
-
             CountingOfStrings quantityOfStrings = new CountingOfStrings();
             int iStrings = quantityOfStrings.countingOfStrings(path, nameIshodFile);
+
+        //Усовие блокирует выполнение программы если размер исходного или словаря файла превышает 2Мб либо кол-строк словаря > 100к
+        if (sizeIshod && sizeDic && iStrings<quantityOfDicStrings) {
+
             while (i < iStrings) {
 
                 // Чтение части текста величиной в n(N) строк.
 
                 ReadPartOfText partOfText = new ReadPartOfText();
-
-                ArrayList<String> n_strings = partOfText.readLines(jj, path, nameIshodFile, numberOfStartStrings, numberOfEndStrings, i);
+                ArrayList<String> n_strings = partOfText.readLines(leftoverOftext, path, nameIshodFile, numberOfStartStrings, numberOfEndStrings, i);
                 i = i + n_strings.size(); //счетчик строк по всему файлу
                 numberOfStartStrings = numberOfEndStrings + 1;
                 numberOfEndStrings = numberOfEndStrings + N;
@@ -67,9 +70,9 @@ public class Main {
                 // Передача обработанной части текста для записи в файл
                 System.out.println(partWasChanged);
                 WriteInHTMLfile writerHTML = new WriteInHTMLfile();
-                jj = writerHTML.startHTMLTeg(partWasChanged, nameHTMLFile, path, i, N);
-                System.out.println(jj);
-                if (!jj.isEmpty()) {
+                leftoverOftext = writerHTML.startHTMLTeg(partWasChanged, nameHTMLFile, path, i, N);
+                System.out.println(leftoverOftext);
+                if (!leftoverOftext.isEmpty()) {
                     iStrings++;
                 }
             }
