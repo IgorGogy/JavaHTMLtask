@@ -1,6 +1,8 @@
 package com.company;
-//import Classes.File; //FixME WTF??
 
+
+//Fixme WTF??
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -13,10 +15,20 @@ import java.util.HashSet;
 //TODO *7remove unnessesary empty lines 12+ in this  file
 //TODO *8 optimize all imports in project
 
+//TODO 1 создать классы, как они были определены вами в телефонном разговоре 12-9-23
+//TODO *2 реализовать соглашения об именах в Java, чтобы имена были лучше: больше смысла и значимости https://clck.ru/35gYaw и
+//TODO 3 то же, что 2 SO для метода, возвращающего список объектов https://clck.ru/35gYdM
+//TODO *4 то же, что и 3 метода управления https://clck.ru/35gYkE
+//TODO 5 то же, что и 4 для остального, в соответствии с соглашением Oracle Java https://clck.ru/35gdUW
+//TODO *6 удалить все возможные встроенные строки из кода (в файл свойств, константы,... куда бы то ни было в никуда) Да, это болезненно
+//TODO *7удаляем ненужные пустые строки 12+ в этом файле
+//TODO *8 оптимизировать весь импорт в проекте
+
 public class Main {
     public static void main(String[] args) {
+
         //FixME следующие 6 строк и далее до конца программы (see //TODO 6)
-        String path = "C:\\Users\\СУПЕР\\Documents\\Idea_task\\TskHTML\\";
+        String path = System.getProperty("user.dir"); // записываем в path адрес строки в которую скопировали проект с кодом. "C:\\SOURCES\\JavaHTMLtask\\";
         String nameIshodFile = "ishod.txt"; //"IMG_4860.MOV.mov"   "ishod.txt"
         String nameHTMLFile = "prihod"; //"IMG_4860.MOV.mov"   "ishod.txt"
 
@@ -52,10 +64,9 @@ public class Main {
         if (sizeYorN) {
 
             // подсчитываем количество строк в исходном файле
-//FixME WTF?? unnessesary empty line (see //TODO7) a plenty of them is there!
+
             CountingOfStrings quantityOfStrings = new CountingOfStrings();
-            //FixME CountingOfStrings та же проблема что и с CountOfFileSize выше
-            int iStrings = quantityOfStrings.countingOfStrings(path, nameIshodFile); //FixME iStrings WTF??
+            int iStrings = quantityOfStrings.countingOfStrings(path, nameIshodFile);
             while (i < iStrings) {
                 // Чтение части текста величиной в n(N) строк.
 
@@ -102,12 +113,13 @@ public class Main {
                 // Передача обработанной части текста для записи в файл
                 System.out.println(partWasChanged);//Fixme WTF??
                 WriteInHTMLfile writerHTML = new WriteInHTMLfile();
-                jj = writerHTML.startHTMLTeg(partWasChanged, nameHTMLFile, path, i);
-                System.out.println(jj);
-                iStrings++;
+                jj = writerHTML.startHTMLTeg(partWasChanged, nameHTMLFile, path, i, N);
+                System.out.println(jj);//Fixme WTF??
+                if (!jj.isEmpty()) {
+                    iStrings++;
+                }
             }
         }
-        System.out.println("Превышен размер файла"); //FixME предусмотреть сообщение о выводе превышения 100 000 строк
-        // write your code here //Fixme WTF??
+        System.out.println("Превышен размер файла");
     }
 }
