@@ -40,21 +40,13 @@ public class Main {
         String symbols = "symbols.txt";
         String fileLetters = "letters.txt";
 
-        int N = 10; // количество строк в куске прочиаемого текста в итоге в файле html
-        int i = 0;  // суммарное количество прочитанных строк в ходе выполнения кода
-        int j = 0; //номер слова в словаре dic.txt
+        int N = 10; // количество строк в куске прочиаемого текста в итоге в файле html //FixME N WTF??
+        int i = 0;  // суммарное количество прочитанных строк в ходе выполнения кода //FixME N WTF??
+        int j = 0; //номер слова в словаре dic.txt  //FixME it's comment variable but what for to know number of word in vocabulary?
         int quantityOfDicStrings = 100000; // максимальное количество строк в словаре
         int numberOfStartStrings = 0;
-        int numberOfEndStrings = numberOfStartStrings + N;
-        ArrayList leftoverOftext = new ArrayList<>();
-
-        int N = 10;         //FixME N WTF??
-        int i = 0;          //FixME i WTF??
-        int j = 0; //номер слова в словаре dic.txt //FixME it's comment variable but what for to know number of word in vocabulary?
-        int numberOfStartStrings = 0; //FixME WTF??
-        int numberOfEndStrings = numberOfStartStrings + N; //FixME WTF??
-        ArrayList jj = new ArrayList<>(); //FixME WTF?? jj=java juniors??
-
+        int numberOfEndStrings = numberOfStartStrings + N;  //FixME WTF??
+        ArrayList leftoverOftext = new ArrayList<>();  //FixME WTF?? jj=java juniors??
 
         //FixME * ВСЕ КОММЕРНТАРИИ не содержат повествовательных наклонений и прочего мусора
         //FixME https://clck.ru/35gbME +комментарии к статье
@@ -89,7 +81,6 @@ public class Main {
 
                 ReadPartOfText partOfText = new ReadPartOfText();
 
-                System.out.println(jj); //FixME WTF??
                 ////FixME выходит за границу экрана:
                 //ArrayList<String> n_strings = partOfText.readLines(jj, path, nameIshodFile, numberOfStartStrings, numberOfEndStrings, i);
                 //FixME лучше переписать так: в 2 стоки, видишь идея линию рисует желательно чтобы далеко за нее твои строкикода и комменты вот как жтот приходиться скролить вправо чтобы прочитать а это не удобно у тех у кого не макбук (там это удобно сделано) также обрати внимание все мои комменты не выходят за эту линию. кроме этой.
