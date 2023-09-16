@@ -20,7 +20,7 @@ Problems.List:
    at java.base/java.io.FileReader.<init>(FileReader.java:60)
    at com.company.CountingOfStrings.countingOfStrings(CountingOfStrings.java:12)
    at com.company.Main.main(Main.java:69)
-   Превышен размер файла //FixME это явно ошибочное сообщение. обратить внимание на задание: "В программе необходимо предусмотреть обработку нештатных ситуаций (Например, выбранный файл заблокирован, или имеет неправильную структуру и т.д.) Программа должна обеспечивать корректную обработку исключительных ситуаций (exceptions)."
+   Превышен размер файла 
 Process finished with exit code 0
 ---
 7. ...
