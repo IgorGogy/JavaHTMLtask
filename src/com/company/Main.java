@@ -12,7 +12,7 @@ import java.util.Properties;
 //done!//TODO *4 same as 3 method mainiming https://clck.ru/35gYkE
 //TODO 5 same as 4 foк rest of all by Oracle Java convention https://clck.ru/35gdUW
 //done!//TODO *6 remove all as possible inline strings from code (to properties file, constants,... whatever to nowhere) Yes it's painfull
-//done!//TODO *7remove unnessesary empty lines 12+ in this  file
+//done!//TODO *7 remove unnessesary empty lines 12+ in this  file
 //done!//TODO *8 optimize all imports in project
 
 //TODO 1 создать классы, как они были определены вами в телефонном разговоре 12-9-23
