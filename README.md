@@ -1,15 +1,16 @@
 "# JavaHTMLtask"
 
 Problems.List:
+
+---10/09
 1. remove all unnesessary comment 
 2. make project runable (absolute path, relative path, no path)
 3. read metanin or smthng else about classes in java: what for they're existed, and what function realizes (check your classses for inconvergence)
----
+---12/09
 4. //FixME need to fix it; when done add "//Done!" in next line under
 5. //TODO need to do it; "//TODO *" is recomended primary task to implement.  %same as 4. add "//implemented" 
----
-6. до сих пор в реппозиторий не добавлены файл_с_текстом и файл_словаря
-7. до сих пор не компилируется: ()
+---16/09
+6. repeat 2.(see above)  project still not runable: ()
 /home/jiraff537/.jdks/openjdk-19.0.2/bin/java -javaagent:/var/calculate/opt/idea/lib/idea_rt.jar=46243:/var/calculate/opt/idea/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /home/jiraff537/IdeaProjects/JavaHTMLtask/out/production/JavaHTMLtask com.company.Main
    java.io.FileNotFoundException: /home/jiraff537/IdeaProjects/JavaHTMLtaskishod.txt (Нет такого файла или каталога)
    at java.base/java.io.FileInputStream.open0(Native Method)
@@ -22,7 +23,7 @@ Problems.List:
    Превышен размер файла //FixME это явно ошибочное сообщение. обратить внимание на задание: "В программе необходимо предусмотреть обработку нештатных ситуаций (Например, выбранный файл заблокирован, или имеет неправильную структуру и т.д.) Программа должна обеспечивать корректную обработку исключительных ситуаций (exceptions)."
 Process finished with exit code 0
 ---
-8. ...
+7. ...
 
 Все, что существительное — это наши объекты.
 Все глаголы — это действия, 
