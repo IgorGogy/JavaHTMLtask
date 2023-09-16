@@ -23,7 +23,10 @@ Problems.List:
    Превышен размер файла 
 Process finished with exit code 0
 ---
-7. ...
+7. from 6.: "Превышен размер файла" - this is clearly an erroneous message. pay attention to the task: "В программе необходимо предусмотреть обработку нештатных ситуаций (Например, выбранный файл заблокирован, или имеет неправильную структуру и т.д.) Программа должна обеспечивать корректную обработку исключительных ситуаций (exceptions)."
+8. get rid of files letters.txt symbols.txt. at least in constants/properties, or at most, completely replacing regexp or something else - there are enough ways for this in java. 
+---
+9. ...
 
 Все, что существительное — это наши объекты.
 Все глаголы — это действия, 
