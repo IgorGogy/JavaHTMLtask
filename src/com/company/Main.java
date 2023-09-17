@@ -95,19 +95,19 @@ public class Main {
 
                 // составление таблицы из символов и знаков препинания ASCII
                 //вроде корректно используется  Fixme WTF?? выглядит как очень нелогичная история:два раза читается одно и то же... вопросики..
-                DicRead ASCIIonlySymbols = new DicRead();
-                HashSet symbolsASCIILoUToFl = ASCIIonlySymbols.dicWord(path, symbols);
+            //    DicRead ASCIIonlySymbols = new DicRead();
+            //    HashSet symbolsASCIILoUToFl = ASCIIonlySymbols.dicWord(path, symbols);
                 //Done!// Fixme WTF??
 
                 // Составление таблицы из букв русского английского алфавита
-                DicRead RusLetters = new DicRead(); //Fixme WTF?? третий раз??? блин тут что-то странное происходит.. обьясни зачем три раза?
-                HashSet letters = RusLetters.dicWord(path, fileLetters);
+            //    DicRead RusLetters = new DicRead(); //Fixme WTF?? третий раз??? блин тут что-то странное происходит.. обьясни зачем три раза?
+             //   HashSet letters = RusLetters.dicWord(path, fileLetters);
                 //Done!//удалил Fixme WTF??
 
                 // Изменение части текста жирным и наклонным
                 //Done!//удалил  Fixme WTF??
                 ChangesInPartOfText partOfTextForChange = new ChangesInPartOfText();
-                ArrayList<String> partWasChanged = partOfTextForChange.makingWordsBoldAndItalic(n_strings, dicWords, symbolsASCIILoUToFl, letters);
+                ArrayList<String> partWasChanged = partOfTextForChange.makingWordsBoldAndItalic(n_strings, dicWords);
 
                 // Передача обработанной части текста для записи в файл
                 //Done!//удалил  Fixme WTF??
@@ -118,6 +118,6 @@ public class Main {
                 }
             }
         }
-        System.out.println("Превышен размер файла");
+        System.out.println("Успех!");
     }
 }

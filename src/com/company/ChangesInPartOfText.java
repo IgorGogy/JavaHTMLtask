@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Locale;
 
 public class ChangesInPartOfText {
-    public ArrayList makingWordsBoldAndItalic(ArrayList<String> partOfTextFromReader, HashSet dicWords, HashSet symbASCII, HashSet lettersASCII) {
+    public ArrayList makingWordsBoldAndItalic(ArrayList<String> partOfTextFromReader, HashSet dicWords) {
         ArrayList<String> partOfTextFromReaderChanged = new ArrayList<>();
         int n_ofArrayElement = 0; // номер элемента списка partOfTextFromReader
         int n_mainSring = 0; // номер основной строки
@@ -18,35 +18,32 @@ public class ChangesInPartOfText {
             int small_n = 0; //номер слова в строке
             while (small_n < small_string.size()) {
                 String changedWord = null;
-                if (!symbASCII.contains(small_string.get(small_n))) { // Проверка: если отрезанный от начала слова знак равен всему слову значит это слово-символ т.е. из одного только символа типа "-"
+              if (small_string.get(small_n).matches(".*[a-zA-Zа-яА-Я].*")) { // Проверка: если отрезанный от начала слова знак равен всему слову значит это слово-символ т.е. из одного только символа типа "-"
                     if (dicWords.contains(small_string.get(small_n).toLowerCase(Locale.ROOT))) {
                         changedWord = ("<b>" + "<i>" + small_string.get(small_n) + "</i>" + "</b>");
                     } else {
                         changedWord = small_string.get(small_n);
                     }
                     if (!(changedWord == null) && small_n == (small_string.size() - 1)) { //Выполнение строки в случае, когда changedWord не равна null, и текущее слово является последним словом в предложении в small_string.
-                        changedWord = (changedWord + "<br>");
+                        changedWord = (changedWord + "<br>");  }
 // отладочный код //Done!//Fixme WTF?? отладку делают отдельным методом и делают одну глобальную переменную debug=false; и потом
 // FixME  ею пользуются переставляя в true и в коде if(debug){calltestMethod(параметры,необходимые,методу}
-                    }
                         char[] lettersInWordOfString = small_string.get(small_n).toCharArray();//разделение на чары не найденное в словаре слово
-                        String str_f = "" + small_string.get(small_n).trim().charAt(0);// первый чар(символ) делается типом String
-                        String str_l = "" + small_string.get(small_n).trim().charAt(small_string.get(small_n).length() - 1);//посследний чар(символ) делается типом String
-                        if (symbASCII.contains(str_f) || symbASCII.contains(str_l)) { //проверка есть ли знаки препинания в слове
+                        if (!Character.isLetter(small_string.get(small_n).trim().charAt(0)) || !Character.isLetter(small_string.get(small_n).trim().charAt(small_string.get(small_n).length() - 1))) { //проверка есть ли знаки препинания в слове
                             StringBuilder wordOutOfSymbols = new StringBuilder();
                             StringBuilder symbolsBuck = new StringBuilder();
                             StringBuilder symbolsForward = new StringBuilder();
                             int nuberOfLastLetter = 0;
                             for (int i = 0; i < lettersInWordOfString.length; i++) {
                                 String letterNumberItoString = ("" + lettersInWordOfString[i]);//перевод char символа(буква или знак) в String
-                                if (lettersASCII.contains(letterNumberItoString)) {  // проверка не буква ли это
+                                if (Character.isLetter(lettersInWordOfString[i])) {  // проверка не буква ли это
                                     wordOutOfSymbols.append(letterNumberItoString);
                                     nuberOfLastLetter = i;
                                 }
                             }
                             for (int i = 0; i < lettersInWordOfString.length; i++) {
                                 String letterNumberItoString = ("" + lettersInWordOfString[i]);//перевод char символ(буква или знак) в String
-                                if (symbASCII.contains(letterNumberItoString)) {  // проверка не буква ли это
+                                if (!Character.isLetter(lettersInWordOfString[i])) {  // проверка не буква ли это
                                     if (i < nuberOfLastLetter) {
                                         symbolsForward.append(lettersInWordOfString[i]);
                                     } else {

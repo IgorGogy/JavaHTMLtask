@@ -19,6 +19,7 @@ public abstract class StringsOfFile implements FileSystem {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("файл всё");
         }
         return nStrings;  // возвращаем массив
     }
