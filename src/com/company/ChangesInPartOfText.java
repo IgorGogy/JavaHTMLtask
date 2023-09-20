@@ -18,7 +18,7 @@ public class ChangesInPartOfText {
             int small_n = 0; //номер слова в строке
             while (small_n < small_string.size()) {
                 String changedWord = null;
-              if (small_string.get(small_n).matches(".*[a-zA-Zа-яА-Я].*")) { // Проверка: если отрезанный от начала слова знак равен всему слову значит это слово-символ т.е. из одного только символа типа "-"
+                if (small_string.get(small_n).matches(".*[a-zA-Zа-яА-Я].*")) { // Проверка: если отрезанный от начала слова знак равен всему слову значит это слово-символ т.е. из одного только символа типа "-"
                     if (dicWords.contains(small_string.get(small_n).toLowerCase(Locale.ROOT))) {
                         changedWord = ("<b>" + "<i>" + small_string.get(small_n) + "</i>" + "</b>");
                     } else {

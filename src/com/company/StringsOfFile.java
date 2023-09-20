@@ -14,12 +14,20 @@ public abstract class StringsOfFile implements FileSystem {
         try (LineNumberReader br = new LineNumberReader(new FileReader(path + name))) {
             while ((line = br.readLine()) != null) { // считываем строки из br соблюдая 2 условия: пока строка не null либо пока кол-во прочитанных строк < maxQuantityOfString
                 if (br.getLineNumber() <= nuberOfEndStrings && br.getLineNumber() >= nuberOfStartStrings) {  //проверяем входит данная строка по номеру в заданный диапазон номеров строк
-                    nStrings.add(line); //заполняем элементы списка ArrayList считанными строками
+                    nStrings.add(line); //заполняем элементы списка ArrayList считанными строками  
+                   if (nStrings.toString().contains("\u0002") && nStrings.toString().contains("�")) {
+                        throw new InvalidTextException("Файл " + path + name + " по своему содержанию не является текстовым");}
                 }
             }
+        } catch (FileNotFoundException e) {
+            // Обработка исключения, если файл не найден
+            System.err.println("Файл не найден: " + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("файл всё");
+            // Обработка исключения, если возникла ошибка при чтении файла
+            System.err.println("Ошибка чтения файла: " + e.getMessage());
+        } catch (Exception e) {
+            // Общая обработка исключений, если возникнет какое-либо другое исключение
+            System.err.println("Произошла ошибка: " + e.getMessage());
         }
         return nStrings;  // возвращаем массив
     }

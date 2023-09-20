@@ -37,8 +37,6 @@ public class Main {
         String nameIshodFile = startData.getProperty("nameIshodFile");
         String nameHTMLFile = startData.getProperty("nameHTMLFile");
         String dicName = startData.getProperty("dicName");
-        String symbols = startData.getProperty("symbols");
-        String fileLetters = startData.getProperty("fileLetters");
         int N = 10; // количество строк в куске прочитанного текста в итоге в файле html //FixME N WTF?? - добавил коммент
         int i = 0;  // суммарное количество прочитанных строк в ходе выполнения кода //FixME N WTF?? - добавил коммент
         //Done!//FixME it's comment variable but what for to know number of word in vocabulary?
@@ -69,12 +67,17 @@ public class Main {
 
         // подсчет количества строк в исходном файле
         CountingOfStrings quantityOfStrings = new CountingOfStrings();
-        int iStrings = quantityOfStrings.countingOfStrings(path, nameIshodFile);
+        int iStrings = quantityOfStrings.countingOfStrings(path, nameIshodFile, quantityOfDicStrings);
+
+        // Чтение файла словаря
+
+        //done//вроде корректно используется FixME DicRead та же проблема что и с CountingOfStrings, CountOfFileSize выше
+        DicRead dicWrd = new DicRead();
+        HashSet dicWords = dicWrd.dicWord(path, dicName);
 
         //блокировка выполнения программы если размер исходного или словаря файла превышает 2Мб либо кол-строк словаря > 100к
-        if (sizeIshod && sizeDic && iStrings < quantityOfDicStrings) {
+        if (!(dicWords == null) && sizeIshod && sizeDic && iStrings < quantityOfDicStrings) {
             while (i < iStrings) {
-
                 // Чтение части текста величиной в n(N) строк.
                 ReadPartOfText partOfText = new ReadPartOfText();
 
@@ -87,21 +90,14 @@ public class Main {
                 numberOfStartStrings = numberOfEndStrings + 1;
                 numberOfEndStrings = numberOfEndStrings + N;
 
-                // Чтение файла словаря
 
-                //вроде корректно используется FixME DicRead та же проблема что и с CountingOfStrings, CountOfFileSize выше
-                DicRead dicWrd = new DicRead();
-                HashSet dicWords = dicWrd.dicWord(path, dicName);
-
-                // составление таблицы из символов и знаков препинания ASCII
                 //вроде корректно используется  Fixme WTF?? выглядит как очень нелогичная история:два раза читается одно и то же... вопросики..
-            //    DicRead ASCIIonlySymbols = new DicRead();
-            //    HashSet symbolsASCIILoUToFl = ASCIIonlySymbols.dicWord(path, symbols);
+                //    DicRead ASCIIonlySymbols = new DicRead();
+                //    HashSet symbolsASCIILoUToFl = ASCIIonlySymbols.dicWord(path, symbols);
                 //Done!// Fixme WTF??
 
-                // Составление таблицы из букв русского английского алфавита
-            //    DicRead RusLetters = new DicRead(); //Fixme WTF?? третий раз??? блин тут что-то странное происходит.. обьясни зачем три раза?
-             //   HashSet letters = RusLetters.dicWord(path, fileLetters);
+                //Done//    DicRead RusLetters = new DicRead(); //Fixme WTF?? третий раз??? блин тут что-то странное происходит.. обьясни зачем три раза?
+                //   HashSet letters = RusLetters.dicWord(path, fileLetters);
                 //Done!//удалил Fixme WTF??
 
                 // Изменение части текста жирным и наклонным
@@ -118,6 +114,5 @@ public class Main {
                 }
             }
         }
-        System.out.println("Успех!");
     }
 }

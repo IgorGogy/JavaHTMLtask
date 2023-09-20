@@ -14,7 +14,6 @@ public class WriteInHTMLfile {
         int x = 0;
         String stringForHTML = null; //переменная для записи остатка строки
         String ostatokStroki = null; // остаток строки который нужно оставить в списке
-        System.out.println(stroka);
         int n_mainSring = 0;
         try (BufferedWriter startHTMLTag = new BufferedWriter(new FileWriter((stroka + (fileName + n + ".html"))))) {
             startHTMLTag.write(  "<!DOCTYPE html>\n" +
@@ -43,7 +42,7 @@ public class WriteInHTMLfile {
                 if (result.get(n_mainSring).endsWith(". ") || result.get(n_mainSring).endsWith("! ") || result.get(n_mainSring).endsWith("? ") || result.get(n_mainSring).endsWith("!\" ") || result.get(n_mainSring).endsWith("?\" ") || result.get(n_mainSring).endsWith(".<br>") || result.get(n_mainSring).endsWith("!<br>") || result.get(n_mainSring).endsWith("?<br>") || result.get(n_mainSring).endsWith("!\"<br>") || result.get(n_mainSring).endsWith("?\"<br>")) {
                     stringForHTML = result.get(n_mainSring);
                     k = result.get(n_mainSring).length() - 1;
-                } else {
+                } else {            // сравнение ровняется ли кусок строки (х) знакам препинания конца предложения
                     if     (result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals(". ") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("! ") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("? ") ||
@@ -53,7 +52,7 @@ public class WriteInHTMLfile {
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("!<") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("?<") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("?\"<") ||
-                            result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("!\"<")) {  // тут сравниваем ровняется ли кусок строки (х) знакам припенания конца предложеия
+                            result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("!\"<")) {
                         stringForHTML = result.get(n_mainSring).substring(0, result.get(n_mainSring).length() - k - 2 + 2);
                         ostatokStroki = result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2 + 2);
                         ostatokStroki = ostatokStroki.replaceAll("<b>", "")
@@ -97,6 +96,7 @@ public class WriteInHTMLfile {
             System.out.println("File has NOT been created");
             System.out.println(ex.getMessage());
         }
+        System.out.println(result.toString());
         return result;
     }
 }
