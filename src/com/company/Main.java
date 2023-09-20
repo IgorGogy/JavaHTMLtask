@@ -1,7 +1,9 @@
 package com.company;//Fixme WTF?? - удалил
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Properties;
@@ -29,15 +31,19 @@ public class Main {
         //Done!//FixME следующие 6 строк и далее до конца программы (see //TODO 6)
         String path = System.getProperty("user.dir") + "\\"; // Запись в path адрес строки в которую скопировали проект с кодом. "C:\\SOURCES\\JavaHTMLtask\\";
         Properties startData = new Properties();
+        int N = 0; // количество строк в куске прочитанного текста в итоге в файле html //FixME N WTF?? - добавил коммент
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             startData.load(new FileInputStream("config.properties"));
+           // String kolichestvoStrokN = reader.readLine();
+            System.out.println("введите количество строк в HTML файле");
+             N = Integer.valueOf(reader.readLine());
         } catch (IOException e) {
             e.printStackTrace();
         }
         String nameIshodFile = startData.getProperty("nameIshodFile");
         String nameHTMLFile = startData.getProperty("nameHTMLFile");
         String dicName = startData.getProperty("dicName");
-        int N = 10; // количество строк в куске прочитанного текста в итоге в файле html //FixME N WTF?? - добавил коммент
         int i = 0;  // суммарное количество прочитанных строк в ходе выполнения кода //FixME N WTF?? - добавил коммент
         //Done!//FixME it's comment variable but what for to know number of word in vocabulary?
         int quantityOfDicStrings = 100000; // максимальное количество строк в словаре
@@ -45,7 +51,6 @@ public class Main {
         int numberOfEndStrings = numberOfStartStrings + N;  //FixME WTF?????????????????????
         ArrayList leftoverOftext = new ArrayList<>();  //Done!//FixME WTF?? jj=java juniors?? - изменил
 
-        //Done!//FixME * ВСЕ КОММЕРНТАРИИ не содержат повествовательных наклонений и прочего мусора  -  исправил
         //FixME https://clck.ru/35gbME +комментарии к статье
         //FixME например тут можно изменить на:
         //проверка размера файла.
@@ -100,7 +105,7 @@ public class Main {
                 //   HashSet letters = RusLetters.dicWord(path, fileLetters);
                 //Done!//удалил Fixme WTF??
 
-                // Изменение части текста жирным и наклонным
+
                 //Done!//удалил  Fixme WTF??
                 ChangesInPartOfText partOfTextForChange = new ChangesInPartOfText();
                 ArrayList<String> partWasChanged = partOfTextForChange.makingWordsBoldAndItalic(n_strings, dicWords);

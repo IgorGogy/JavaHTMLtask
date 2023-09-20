@@ -43,7 +43,8 @@ public class WriteInHTMLfile {
                     stringForHTML = result.get(n_mainSring);
                     k = result.get(n_mainSring).length() - 1;
                 } else {            // сравнение ровняется ли кусок строки (х) знакам препинания конца предложения
-                    if     (result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals(". ") ||
+                    if ((result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k)).matches("[.!??\"]"))
+                         /*(result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals(". ") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("! ") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("? ") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("?\"") ||
@@ -52,8 +53,9 @@ public class WriteInHTMLfile {
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("!<") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("?<") ||
                             result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("?\"<") ||
-                            result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("!\"<")) {
-                        stringForHTML = result.get(n_mainSring).substring(0, result.get(n_mainSring).length() - k - 2 + 2);
+                            result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2, (result.get(n_mainSring)).length() - k).equals("!\"<")) */
+
+                    {   stringForHTML = result.get(n_mainSring).substring(0, result.get(n_mainSring).length() - k - 2 + 2);
                         ostatokStroki = result.get(n_mainSring).substring(result.get(n_mainSring).length() - k - 2 + 2);
                         ostatokStroki = ostatokStroki.replaceAll("<b>", "")
                                 .replaceAll("<i>", "")
