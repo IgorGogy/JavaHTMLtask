@@ -13,6 +13,7 @@ public abstract class StringsOfFile implements FileSystem {
         nStrings = jj;
         try (LineNumberReader br = new LineNumberReader(new FileReader(path + name))) {
             while ((line = br.readLine()) != null) { // считываем строки из br соблюдая 2 условия: пока строка не null либо пока кол-во прочитанных строк < maxQuantityOfString
+                System.out.println(line);
                 if (br.getLineNumber() <= nuberOfEndStrings && br.getLineNumber() >= nuberOfStartStrings) {  //проверяем входит данная строка по номеру в заданный диапазон номеров строк
                     nStrings.add(line); //заполняем элементы списка ArrayList считанными строками  
                    if (nStrings.toString().contains("\u0002") && nStrings.toString().contains("�")) {
